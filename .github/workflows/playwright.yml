@@ -13,12 +13,11 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
-    - name: Use variables
+    - name: Use GitHub Secrets
       run: |
-        echo "repository variable : $API_TOKEN"
-        echo "organization variable : $ACC_USERNAME"
-        echo "overridden variable : $ACC_PASSWORD"
-        echo "variable from shell environment : $env_var"
+        echo "Using API_TOKEN: 2 $API_TOKEN"
+        echo "ACC_USERNAME: 2 $ACC_USERNAME"
+        echo "ACC_PASSWORD: 2 $ACC_PASSWORD"
       env:
         API_TOKEN: ${{ secrets.API_TOKEN }}
         ACC_USERNAME: ${{ secrets.ACC_USERNAME }}
