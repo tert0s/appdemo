@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 
 export class LoginPage {
   private page: Page;
@@ -32,14 +32,15 @@ export class LoginPage {
 	await loginButton.click()
   }
   
-  // confirm login
-  
-  //expect page to be
-
   // Combined method for performing the login action
   async login(username: string, password: string): Promise<void> {
     await this.enterUsername(username);
     await this.enterPassword(password);
     await this.clickLoginButton();
+  }
+  
+  async assertSuccessfulLogin(): Promise<void> {
+    const dashboardLink = this.page.getByRole('link', { name: 'Dashboard' });
+    await expect(dashboardLink).toBeVisible();
   }
 }
