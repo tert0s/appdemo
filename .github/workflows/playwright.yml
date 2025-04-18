@@ -15,9 +15,9 @@ jobs:
         node-version: lts/*
     - name: Set up environment variables
       run: |
-        echo "API_TOKEN=${{ secrets.API_TOKEN }}" >> $GITHUB_ENV
-        echo "ACC_USERNAME=${{ secrets.ACC_USERNAME }}" >> $GITHUB_ENV
-        echo "ACC_PASSWORD=${{ secrets.ACC_PASSWORD }}" >> $GITHUB_ENV
+      echo "API_TOKEN=${{ secrets.API_TOKEN }}" >> $GITHUB_ENV
+      echo "ACC_USERNAME=${{ secrets.ACC_USERNAME }}" >> $GITHUB_ENV
+      echo "ACC_PASSWORD=${{ secrets.ACC_PASSWORD }}" >> $GITHUB_ENV
     - name: Debug environment variables
       run: env | grep 'API_KEY\|ACC_USERNAME\|ACC_PASSWORD'
     - name: Install dependencies
