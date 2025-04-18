@@ -20,7 +20,6 @@ test.describe('GitHub UI Test with API Verification', () => {
   const githubUsername = process.env.ACC_USERNAME; // Read GitHub username from environment variables
   const githubPassword = process.env.ACC_PASSWORD; // Read GitHub password from environment variables
   const githubToken = process.env.API_TOKEN; // Read GitHub personal access token for API calls
-  
   // API context
   let apiContext;
   
