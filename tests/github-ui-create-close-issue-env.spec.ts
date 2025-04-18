@@ -50,7 +50,6 @@ test.describe('GitHub UI Test with API Verification', () => {
 	const loginPage = new LoginPage(page);
 	await loginPage.navigateToLoginPage(`${githubBaseURL}/login`);
 	await loginPage.login(githubUsername, githubPassword);
-	await loginPage.assertSuccessfulLogin();
 	// await page.goto(`${githubBaseURL}/login`);
     // await page.fill('input[name="login"]', githubUsername);
     // await page.fill('input[name="password"]', githubPassword);

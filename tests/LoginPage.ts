@@ -30,6 +30,8 @@ export class LoginPage {
   async clickLoginButton(): Promise<void> {
     const loginButton= this.page.getByRole('button', { name: 'Sign in', exact: true });
 	await loginButton.click();
+	await expect(this.page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
+	
   }
   
   // Combined method for performing the login action
@@ -37,10 +39,5 @@ export class LoginPage {
     await this.enterUsername(username);
     await this.enterPassword(password);
     await this.clickLoginButton();
-  }
-  
-  async assertSuccessfulLogin(): Promise<void> {
-	const dashboardLink = this.page.getByRole('link', { name: 'Dashboard' });
-    await expect(dashboardLink).toBeVisible();
   }
 }
