@@ -17,8 +17,8 @@ test.describe('GitHub UI Test with API Verification', () => {
   const githubBaseURL = 'https://github.com';
 
   // GitHub credentials loaded from environment variables
-  const githubUsername = process.env.GITHUB_USERNAME; // Read GitHub username from environment variables
-  const githubPassword = process.env.GITHUB_PASSWORD; // Read GitHub password from environment variables
+  const githubUsername = process.env.ACC_USERNAME; // Read GitHub username from environment variables
+  const githubPassword = process.env.ACC_PASSWORD; // Read GitHub password from environment variables
   const githubToken = process.env.API_TOKEN; // Read GitHub personal access token for API calls
   
   // API context
@@ -44,7 +44,7 @@ test.describe('GitHub UI Test with API Verification', () => {
   test('Create and Close an Issue via GitHub UI with API Verification', async ({ page }) => {	   
     // Step 1: Ensure credentials are available
     if (!githubUsername || !githubPassword || !githubToken) {
-      throw new Error('GitHub credentials or token are missing. Please set GITHUB_USERNAME, GITHUB_PASSWORD, and GITHUB_TOKEN in your .env file.');
+      throw new Error('GitHub credentials or token are missing. Please set ACC_USERNAME, ACC_PASSWORD, and GITHUB_TOKEN in your .env file.');
     }
 
     // Step 2: Log in to GitHub
