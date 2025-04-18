@@ -37,8 +37,8 @@ test.describe('GitHub UI Test with API Verification', () => {
   });
 
   test.afterAll(async () => {
-    // Dispose of the API context after all tests
-    await apiContext.dispose();
+    // Dispose of the API context after all tests //Why does it dispose before exiting Test?
+    //await apiContext.dispose();
   });
   
   test('Create and Close an Issue via GitHub UI with API Verification', async ({ page }) => {	   
