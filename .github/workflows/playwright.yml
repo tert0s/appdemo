@@ -1,12 +1,12 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
+
 jobs:
   test:
-    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -17,20 +17,15 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Use GitHub Secrets
+    - name: Set up environment variables
       run: |
-        echo "Using API_TOKEN: 2 $API_TOKEN"
-        echo "ACC_USERNAME: 2 $ACC_USERNAME"
-        echo "ACC_PASSWORD: 2 $ACC_PASSWORD"
-      env:
-        API_TOKEN: ${{ secrets.API_TOKEN }}
-        ACC_USERNAME: ${{ secrets.ACC_USERNAME }}
-        ACC_PASSWORD: ${{ secrets.ACC_PASSWORD }}
+        echo "API_TOKEN=${{ secrets.API_TOKEN }}" >> $GITHUB_ENV
+        echo "ACC_USERNAME=${{ secrets.ACC_USERNAME }}" >> $GITHUB_ENV
+        echo "ACC_PASSWORD=${{ secrets.ACC_PASSWORD }}" >> $GITHUB_ENV
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --output=playwright-report --trace=on
     - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
       with:
         name: playwright-report
         path: playwright-report/
-        retention-days: 30
+        retention-days: 7
